@@ -14,21 +14,19 @@ new Vue( {
       monster: false
     },
     gameStarted: false,
-    healthLog: {
-      human: [],
-      monster: []
-    }
+    healthLog: []
   },
   methods: {
     startGame: function() {
-      this.gameStarted = true;
-      this.humanHealth = 100;
-      this.monsterHealth = 100;
+      this.gameStarted       = true;
+      this.humanHealth       = 100;
+      this.monsterHealth     = 100;
+      this.healthLog         = [];
       alert( 'New game!' );
     },
     updateHealthLog: function( human, monster ) {
-      this.healthLog.human.push( human - this.humanHealth );
-      this.healthLog.monster.push( monster - this.monsterHealth );
+      this.healthLog.push( { 'health': `Human just lost ${ human - this.humanHealth }`, humanTurn: true, healed: false } );
+      this.healthLog.push( { 'health': `Monster just lost ${ monster - this.monsterHealth }`, humanTurn: false } );
     },
     attackAmount: function( amount ) {
       return Math.floor( Math.random() * amount );
@@ -47,11 +45,16 @@ new Vue( {
       }
     },
     healPlayer: function() {
+      var health = this.humanHealth;
       // Attack both players
       this.attack( 10 );
       // Rest & heal both players
       this.humanHealth   = this.humanHealth + 10;
       this.monsterHealth = this.monsterHealth + 5;
+      
+      if ( this.humanHealth > health ) {
+        this.healthLog.push( { 'health': `Human just healed ${ this.humanHealth - health }`, healed: true } );
+      }
     },
     normalAttack: function() {
       this.attack( 10 );

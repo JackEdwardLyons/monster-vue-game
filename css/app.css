@@ -19,6 +19,10 @@
   padding: 10px;"
 }
 
+.healed {
+  background: lime;
+}
+
 .is-dead {
   width: 100%;
   background: firebrick;

@@ -52,10 +52,10 @@
       </section>
       <section class="row log">
           <div class="small-12 columns">
-              <ul v-if="healthLog.human.length">
-                  <li class="health-log" v-for="(log, index) in healthLog">
+              <ul v-if="healthLog.length">
+                  <li class="health-log" v-for="(log, index) in healthLog" :class="{ healed: log.healed }">
                     <span>
-                      {{ index }} just lost {{ log[log.length - 1] }}
+                      {{ log.health }}
                     </span>
                   </li>
               </ul>
