@@ -1,3 +1,9 @@
+/* ------------------------------- *\
+ * Author: Jack Lyons              *
+ * Author URL: www.jacklyons.me    *
+ * TODO: add logs                  *
+ * ------------------------------- */
+
 new Vue( {
   el: '#app',
   data: {

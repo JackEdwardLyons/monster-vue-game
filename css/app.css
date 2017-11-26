@@ -12,6 +12,13 @@
   align-items: center;
 }
 
+.health-log {
+  background: tomato; 
+  color: white; 
+  width: 100%; 
+  padding: 10px;"
+}
+
 .is-dead {
   width: 100%;
   background: firebrick;
